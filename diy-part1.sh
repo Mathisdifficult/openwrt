@@ -15,3 +15,17 @@
 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+
+#!/bin/bash openclash
+git clone https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone https://github.com/tianiue/luci-app-pptp-vpnserver.git package/luci-app-pptp-vpnserver
+git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
+git clone https://github.com/schen39/luci-app-serverchan.git package/luci-app-serverchan
+git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/lean/luci-app-smartdns  #smartdns DNS加速
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/lean/luci-app-adguardhome
+
+rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon  #新的argon主题
+
+
+./scripts/feeds update -a
+./scripts/feeds install -a
